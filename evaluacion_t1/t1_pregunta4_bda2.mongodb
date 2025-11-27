@@ -70,7 +70,6 @@ print(`Eliminados correctamente: ${resultado4.deletedCount} equipo(s)`);
 print(`Total de documentos eliminados: ${resultado4.deletedCount}`);
 print(`La colección 'equipos' está ahora VACÍA\n`);
 
-
 // ============================================
 // ELIMINACIÓN 5: Eliminar la colección clientes
 // ============================================
