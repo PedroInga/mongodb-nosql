@@ -16,12 +16,14 @@ db.equipos.updateOne(
     { Nombre: "Monitor LG" },
     { $set: { Nombre: "Monitor Samsung" } }
 );
+db.equipos.findOne({ Nombre: "Monitor Samsung" });
 
 // ACTUALIZACIÓN 2: Precio Tablet Lenovo 1750 → 2350
 db.equipos.updateOne(
     { Nombre: "Tablet Lenovo" },
     { $set: { Precio: 2350 } }
 );
+db.equipos.findOne({ Nombre: "Tablet Lenovo" });
 
 
 // ============================================
@@ -34,81 +36,14 @@ db.clientes.updateOne(
     { $set: { FechaDeNacimiento: new Date("2006-06-06") } }
 );
 
+db.clientes.findOne({ Nombre: "Ana", Apellido: "Gómez" });
+
+
 // ACTUALIZACIÓN 4: Celular Juan Pérez → 989654333
 db.clientes.updateOne(
     { Nombre: "Juan", Apellido: "Pérez" },
     { $set: { Celular: "989654333" } }
 );
 
-
-// ============================================
-// VERIFICACIÓN DE ACTUALIZACIONES
-// ============================================
-
-// Verificar equipos
-print("=== EQUIPOS ACTUALIZADOS ===");
-db.equipos.findOne({ Nombre: "Monitor Samsung" });
-db.equipos.findOne({ Nombre: "Tablet Lenovo" });
-
-// Verificar clientes
-print("\n=== CLIENTES ACTUALIZADOS ===");
-db.clientes.findOne({ Nombre: "Ana", Apellido: "Gómez" });
 db.clientes.findOne({ Nombre: "Juan", Apellido: "Pérez" });
 
-
-// ============================================
-// ALTERNATIVAS Y VARIACIONES
-// ============================================
-
-// Actualización con múltiples campos a la vez
-db.equipos.updateOne(
-    { Nombre: "Monitor Samsung" },
-    { 
-        $set: { 
-            Nombre: "Monitor Samsung",
-            Precio: 999 
-        } 
-    }
-);
-
-// Actualización usando el código del cliente
-db.clientes.updateOne(
-    { Codigo: "001" },
-    { $set: { Celular: "989654333" } }
-);
-
-// Incrementar un valor numérico
-db.equipos.updateOne(
-    { Nombre: "Tablet Lenovo" },
-    { $inc: { Precio: 600 } }  // Incrementa 600 al precio actual
-);
-
-// Actualización con operador $currentDate (fecha actual)
-db.clientes.updateOne(
-    { Nombre: "Juan", Apellido: "Pérez" },
-    { 
-        $set: { Celular: "989654333" },
-        $currentDate: { ultimaActualizacion: true }
-    }
-);
-
-
-// ============================================
-// COMANDOS DE VERIFICACIÓN ADICIONALES
-// ============================================
-
-// Contar documentos actualizados
-print("Total equipos: " + db.equipos.countDocuments());
-print("Total clientes: " + db.clientes.countDocuments());
-
-// Mostrar todos los equipos con sus precios
-print("\n=== LISTA DE EQUIPOS CON PRECIOS ===");
-db.equipos.find({}, { Nombre: 1, Precio: 1, _id: 0 }).forEach(e => {
-    print(`${e.Nombre}: S/ ${e.Precio}`);
-});
-
-// Mostrar todos los clientes con celulares
-print("\n=== LISTA DE CLIENTES CON CELULARES ===");
-db.clientes.find({}, { Nombre: 1, Apellido: 1, Celular: 1, _id: 0 }).forEach(c => {
-    print(`${c.Nombre} ${c.Apellido}: ${c.Celular || 'Sin celular'}`);
-});
