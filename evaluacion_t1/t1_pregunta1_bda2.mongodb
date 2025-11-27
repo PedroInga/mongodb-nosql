@@ -5,12 +5,6 @@
 // Repositorio: github.com/PedroInga/mongodb-nosql
 // ==============================================
 
-print("╔══════════════════════════════════════════════════════════════╗");
-print("║          EVALUACIÓN T1 - BASE DE DATOS AVANZADO II           ║");
-print("║                      PREGUNTA 1                              ║");
-print("║              Gestión de TechStore con MongoDB                ║");
-print("╚══════════════════════════════════════════════════════════════╝\n");
-
 // ==============================================
 // PASO 1: CREAR LA BASE DE DATOS dbTechStore
 // ==============================================
