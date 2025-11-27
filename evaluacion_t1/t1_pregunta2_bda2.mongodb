@@ -2,6 +2,11 @@
 // PREGUNTA 2 - CONSULTAS SIMPLIFICADAS
 // Versiones cortas para referencia rápida
 // ==============================================
+print("╔══════════════════════════════════════════════════════════════╗");
+print("║          EVALUACIÓN T1 - BASE DE DATOS AVANZADO II           ║");
+print("║                      PREGUNTA 2                              ║");
+print("║                        Listar                                ║");
+print("╚══════════════════════════════════════════════════════════════╝\n");
 
 use('dbTechStore');
 

@@ -15,15 +15,15 @@ print("╚═══════════════════════�
 // PASO 1: CREAR LA BASE DE DATOS dbTechStore
 // ==============================================
 
-print("🔹 PASO 1: Creando base de datos dbTechStore...");
+print("PASO 1: Creando base de datos dbTechStore...");
 use('dbTechStore');
-print("✅ Base de datos 'dbTechStore' creada/seleccionada\n");
+print("Base de datos 'dbTechStore' creada/seleccionada\n");
 
 // ==============================================
 // PASO 2: CREAR COLECCIÓN EQUIPOS (INSERCIÓN UNO POR UNO)
 // ==============================================
 
-print("🔹 PASO 2: Creando colección 'equipos' con inserción uno por uno...\n");
+print("PASO 2: Creando colección 'equipos' con inserción uno por uno...\n");
 
 // Documento 1: Laptop Asus
 db.equipos.insertOne({
@@ -37,7 +37,7 @@ db.equipos.insertOne({
         "Ratón inalámbrico"
     ]
 });
-print("   ✓ Equipo 1: Laptop Asus insertado");
+print("Equipo 1: Laptop Asus insertado");
 
 // Documento 2: Monitor LG
 db.equipos.insertOne({
@@ -51,7 +51,7 @@ db.equipos.insertOne({
         "Adaptador de corriente"
     ]
 });
-print("   ✓ Equipo 2: Monitor LG insertado");
+print("Equipo 2: Monitor LG insertado");
 
 // Documento 3: Teclado Logitech
 db.equipos.insertOne({
@@ -65,7 +65,7 @@ db.equipos.insertOne({
         "Cable USB desmontable"
     ]
 });
-print("   ✓ Equipo 3: Teclado Logitech insertado");
+print("Equipo 3: Teclado Logitech insertado");
 
 // Documento 4: Impresora Epson
 db.equipos.insertOne({
@@ -79,7 +79,7 @@ db.equipos.insertOne({
         "Manual de usuario"
     ]
 });
-print("   ✓ Equipo 4: Impresora Epson insertado");
+print("Equipo 4: Impresora Epson insertado");
 
 // Documento 5: Tablet Lenovo
 db.equipos.insertOne({
@@ -93,15 +93,15 @@ db.equipos.insertOne({
         "Lápiz táctil"
     ]
 });
-print("   ✓ Equipo 5: Tablet Lenovo insertado");
+print("Equipo 5: Tablet Lenovo insertado");
 
-print("\n✅ Colección 'equipos' creada con " + db.equipos.countDocuments() + " documentos\n");
+print("\nColección 'equipos' creada con " + db.equipos.countDocuments() + " documentos\n");
 
 // ==============================================
 // PASO 3: CREAR COLECCIÓN CLIENTES (INSERCIÓN MASIVA)
 // ==============================================
 
-print("🔹 PASO 3: Creando colección 'clientes' con inserción masiva...\n");
+print("PASO 3: Creando colección 'clientes' con inserción masiva...\n");
 
 db.clientes.insertMany([
     {
@@ -169,33 +169,4 @@ db.clientes.insertMany([
     }
 ]);
 
-print("✅ Colección 'clientes' creada con " + db.clientes.countDocuments() + " documentos\n");
-
-// ==============================================
-// VERIFICACIÓN COMPLETA DE DATOS
-// ==============================================
-
-print("╔══════════════════════════════════════════════════════════════╗");
-print("║                  VERIFICACIÓN DE DATOS                       ║");
-print("╚══════════════════════════════════════════════════════════════╝\n");
-
-// EQUIPOS
-print("📦 COLECCIÓN EQUIPOS:");
-print("─────────────────────────────────────────────────────────────────");
-db.equipos.find().forEach(equipo => {
-    print(`\n🔧 ${equipo.Nombre}`);
-    print(`   Categoría: ${equipo.Categoria}`);
-    print(`   Precio: S/ ${equipo.Precio}`);
-    print(`   Stock: ${equipo.Stock} unidades`);
-    print(`   Accesorios: ${equipo.Accesorios.join(", ")}`);
-});
-
-print("\n\n👥 COLECCIÓN CLIENTES:");
-print("─────────────────────────────────────────────────────────────────");
-db.clientes.find().forEach(cliente => {
-    print(`\n👤 ${cliente.Nombre} ${cliente.Apellido} (Código: ${cliente.Codigo})`);
-    print(`   Nacimiento: ${cliente.FechaDeNacimiento.toISOString().split('T')[0]}`);
-    print(`   Celular: ${cliente.Celular || 'No registrado'}`);
-    print(`   Intereses: ${cliente.CategoriasDeInteres.join(", ")}`);
-});
-
+print("Colección 'clientes' creada con " + db.clientes.countDocuments() + " documentos\n");
