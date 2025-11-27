@@ -30,19 +30,6 @@ db.clientes.find().limit(2).forEach(cliente => {
 // ============================================
 // CONSULTA 3: Listar solo nombre, apellido, celular y categorías de interés
 // ============================================
-
-db.clientes.find(
-    {},
-    {
-        Nombre: 1,
-        Apellido: 1,
-        Celular: 1,
-        CategoriasDeInteres: 1,
-        _id: 0
-    }
-);
-
-// Versión con formato legible
 db.clientes.find(
     {},
     {
