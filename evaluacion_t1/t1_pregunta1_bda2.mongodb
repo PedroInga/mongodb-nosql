@@ -101,8 +101,6 @@ print("\n✅ Colección 'equipos' creada con " + db.equipos.countDocuments() + "
 // PASO 3: CREAR COLECCIÓN CLIENTES (INSERCIÓN MASIVA)
 // ==============================================
 
-db.getName()
-
 print("🔹 PASO 3: Creando colección 'clientes' con inserción masiva...\n");
 
 db.clientes.insertMany([
