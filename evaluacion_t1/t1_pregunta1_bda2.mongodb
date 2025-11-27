@@ -201,39 +201,3 @@ db.clientes.find().forEach(cliente => {
     print(`   Intereses: ${cliente.CategoriasDeInteres.join(", ")}`);
 });
 
-// ==============================================
-// ESTADÍSTICAS FINALES
-// ==============================================
-
-print("\n\n╔══════════════════════════════════════════════════════════════╗");
-print("║                     ESTADÍSTICAS FINALES                     ║");
-print("╚══════════════════════════════════════════════════════════════╝\n");
-
-const totalEquipos = db.equipos.countDocuments();
-const totalClientes = db.clientes.countDocuments();
-const valorTotalInventario = db.equipos.aggregate([
-    { $group: { _id: null, total: { $sum: { $multiply: ["$Precio", "$Stock"] } } } }
-]).toArray()[0].total;
-
-print("📊 EQUIPOS:");
-print(`   • Total de equipos: ${totalEquipos}`);
-print(`   • Valor total del inventario: S/ ${valorTotalInventario.toLocaleString()}`);
-print(`   • Unidades en stock: ${db.equipos.aggregate([{$group: {_id: null, total: {$sum: "$Stock"}}}]).toArray()[0].total}`);
-
-print("\n📊 CLIENTES:");
-print(`   • Total de clientes: ${totalClientes}`);
-print(`   • Con celular registrado: ${db.clientes.countDocuments({ Celular: { $ne: "" } })}`);
-print(`   • Sin celular registrado: ${db.clientes.countDocuments({ Celular: "" })}`);
-
-// Categorías más populares
-print("\n📊 CATEGORÍAS MÁS POPULARES ENTRE CLIENTES:");
-const categorias = {};
-db.clientes.find().forEach(cliente => {
-    cliente.CategoriasDeInteres.forEach(cat => {
-        categorias[cat] = (categorias[cat] || 0) + 1;
-    });
-});
-Object.keys(categorias).sort((a, b) => categorias[b] - categorias[a]).forEach(cat => {
-    print(`   • ${cat}: ${categorias[cat]} cliente(s) interesado(s)`);
-});
-
