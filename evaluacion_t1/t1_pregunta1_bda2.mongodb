@@ -101,6 +101,8 @@ print("\n✅ Colección 'equipos' creada con " + db.equipos.countDocuments() + "
 // PASO 3: CREAR COLECCIÓN CLIENTES (INSERCIÓN MASIVA)
 // ==============================================
 
+db.getName()
+
 print("🔹 PASO 3: Creando colección 'clientes' con inserción masiva...\n");
 
 db.clientes.insertMany([
@@ -235,24 +237,3 @@ Object.keys(categorias).sort((a, b) => categorias[b] - categorias[a]).forEach(ca
     print(`   • ${cat}: ${categorias[cat]} cliente(s) interesado(s)`);
 });
 
-// ==============================================
-// RESUMEN FINAL
-// ==============================================
-
-print("\n\n╔══════════════════════════════════════════════════════════════╗");
-print("║                    RESUMEN DE LA PREGUNTA 1                  ║");
-print("╚══════════════════════════════════════════════════════════════╝\n");
-
-print("✅ PASO 1: Base de datos 'dbTechStore' creada exitosamente");
-print("✅ PASO 2: Colección 'equipos' con 5 documentos (inserción uno por uno)");
-print("✅ PASO 3: Colección 'clientes' con 5 documentos (inserción masiva)");
-
-print("\n📁 Colecciones en la base de datos dbTechStore:");
-db.getCollectionNames().forEach(col => {
-    const count = db.getCollection(col).countDocuments();
-    print(`   ✓ ${col}: ${count} documento(s)`);
-});
-
-print("\n╔══════════════════════════════════════════════════════════════╗");
-print("║          🎉 PREGUNTA 1 COMPLETADA EXITOSAMENTE 🎉           ║");
-print("╚══════════════════════════════════════════════════════════════╝");
