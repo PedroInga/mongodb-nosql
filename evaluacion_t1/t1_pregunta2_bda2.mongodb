@@ -14,9 +14,6 @@ use('dbTechStore');
 // CONSULTA 1: Listar los 3 primeros documentos de equipos
 // ============================================
 
-db.equipos.find().limit(3);
-
-// Versión con formato legible
 db.equipos.find().limit(3).forEach(equipo => {
     printjson(equipo);
 });
@@ -24,8 +21,6 @@ db.equipos.find().limit(3).forEach(equipo => {
 // ============================================
 // CONSULTA 2: Listar los 2 primeros documentos de clientes
 // ============================================
-
-db.clientes.find().limit(2);
 
 // Versión con formato legible
 db.clientes.find().limit(2).forEach(cliente => {
@@ -53,9 +48,6 @@ db.clientes.find(
 // CONSULTA 4: Listar equipos con stock >= 100
 // ============================================
 
-db.equipos.find({ Stock: { $gte: 100 } });
-
-// Versión con formato legible
 db.equipos.find({ Stock: { $gte: 100 } }).forEach(equipo => {
     printjson(equipo);
 });
