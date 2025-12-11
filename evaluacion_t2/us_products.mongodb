@@ -159,8 +159,8 @@ db.products.insertMany([
 ])
 
 // PREGUNTA 2 - Consulta 1
-// Listar productos: _id, nombre, marca, talla y precio
-// Filtrar: sucursal "Sucursal Norte" Y precio >= 100
+// Listar _id, nombre, marca, talla y precio de las prendas
+// Filtrar: sucursal sea "Sucursal Norte" Y precio mayor o igual a 100
 
 db.products.find(
     {
@@ -177,3 +177,4 @@ db.products.find(
         precio: 1
     }
 )
+
