@@ -138,7 +138,8 @@ db.clients.insertMany([
     }
 ])    
 
-
+// Cantidad de documentos insertados
+db.clients.find().count()
 
 // PREGUNTA 1 - Consulta 1
 // Muestre los clientes que no residan en Breña ni en La Molina
