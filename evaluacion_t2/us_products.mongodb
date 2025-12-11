@@ -178,3 +178,23 @@ db.products.find(
     }
 )
 
+
+// PREGUNTA 2 - Consulta 2
+// Mostrar productos cuyo precio sea mayor a 55 O color "azul"
+// NO considerar de la temporada "Invierno"
+
+db.products.find(
+    {
+        $and: [
+            {
+                $or: [
+                    { precio: { $gt: 55 } },
+                    { "especificaciones.color": { $eq: "Azul" } }
+                ]
+            },
+            {
+                "especificaciones.temporada": { $ne: "Invierno" }
+            }
+        ]
+    }
+)
