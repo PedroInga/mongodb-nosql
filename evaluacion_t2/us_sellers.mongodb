@@ -80,5 +80,22 @@ db.sellers.insertMany([
     }
 ])
 
-// Cantidad de documentos insertados
-db.sellers.find().count()
+
+
+// PREGUNTA 3 - Consulta 1
+// Mostrar nombres, ventas mensuales y sede
+// Después del tercer documento (skip 3)
+// Filtrar por sede "Sucursal Sur"
+// Ordenar por cualquier campo
+
+db.sellers.find(
+    {
+        sucursal: { $eq: "Sucursal Sur" }
+    },
+    {
+        _id: 0,
+        nombre: 1,
+        "metas.ventasMensuales": 1,
+        sucursal: 1
+    }
+).sort({ nombre: 1 }).skip(3)
