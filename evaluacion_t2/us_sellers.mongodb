@@ -82,6 +82,7 @@ db.sellers.insertMany([
 
 
 
+
 // PREGUNTA 3 - Consulta 1
 // Mostrar nombres, ventas mensuales y sede
 // Después del tercer documento (skip 3)
@@ -99,3 +100,36 @@ db.sellers.find(
         sucursal: 1
     }
 ).sort({ nombre: 1 }).skip(3)
+
+
+// PREGUNTA 3 - Consulta 2
+// Mostrar nombres, apellidos y fecha de ingreso (sin _id)
+// Ordenar descendente por apellidos
+// Recuperar los 4 primeros documentos
+// Filtrar vendedores con clientesNuevos <= 20
+
+db.sellers.find(
+    {
+        "metas.clientesNuevos": { $lte: 20 }
+    },
+    {
+        _id: 0,
+        nombre: 1,
+        apellidos: 1,
+        fechaIngreso: 1
+    }
+).sort({ apellidos: -1 }).limit(4)
+
+
+// PREGUNTA 3 - Consulta 3
+// Mostrar vendedores con ventasMensuales >= 10000 y < 11000
+// Ordenar descendente por nombre
+
+db.sellers.find(
+    {
+        "metas.ventasMensuales": {
+            $gte: 10000,
+            $lt: 11000
+        }
+    }
+).sort({ nombre: -1 })
