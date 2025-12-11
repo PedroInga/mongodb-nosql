@@ -158,5 +158,22 @@ db.products.insertMany([
     }
 ])
 
-// Cantidad de documentos insertados
-db.products.find().count()
+// PREGUNTA 2 - Consulta 1
+// Listar productos: _id, nombre, marca, talla y precio
+// Filtrar: sucursal "Sucursal Norte" Y precio >= 100
+
+db.products.find(
+    {
+        $and: [
+            { sucursal: { $eq: "Sucursal Norte" } },
+            { precio: { $gte: 100 } }
+        ]
+    },
+    {
+        _id: 1,
+        nombre: 1,
+        marca: 1,
+        talla: 1,
+        precio: 1
+    }
+)
