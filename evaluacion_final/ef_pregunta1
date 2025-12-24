@@ -1,0 +1,59 @@
+// PREGUNTA 1: Insertar 5 clientes de forma masiva
+// Base de datos: Baticell_store
+// Colección: clientes
+
+// Primero, asegúrate de estar usando la base de datos correcta
+use Baticell_store
+
+// Inserción masiva de 5 clientes con _id correlativos (1, 2, 3, 4, 5)
+// 2 solteros, 2 casados, 1 sin estado civil
+db.clientes.insertMany([
+  {
+    _id: 1,
+    nombre: "Juan",
+    apellido: "Pérez",
+    email: "juan.perez@email.com",
+    telefono: "987654321",
+    direccion: "Av. Principal 123, Lima",
+    estado_civil: "soltero"
+  },
+  {
+    _id: 2,
+    nombre: "María",
+    apellido: "González",
+    email: "maria.gonzalez@email.com",
+    telefono: "912345678",
+    direccion: "Jr. Los Alamos 456, San Isidro",
+    estado_civil: "casado"
+  },
+  {
+    _id: 3,
+    nombre: "Carlos",
+    apellido: "Rodríguez",
+    email: "carlos.rodriguez@email.com",
+    telefono: "998877665",
+    direccion: "Calle Las Flores 789, Miraflores",
+    estado_civil: "soltero"
+  },
+  {
+    _id: 4,
+    nombre: "Ana",
+    apellido: "Martínez",
+    email: "ana.martinez@email.com",
+    telefono: "955443322",
+    direccion: "Av. Arequipa 321, Lince",
+    estado_civil: "casado"
+  },
+  {
+    _id: 5,
+    nombre: "Luis",
+    apellido: "Torres",
+    email: "luis.torres@email.com",
+    telefono: "966554433",
+    direccion: "Jr. Cusco 654, Cercado de Lima"
+    // Sin campo estado_civil
+  }
+])
+
+// Para verificar la inserción:
+db.clientes.find().pretty()
