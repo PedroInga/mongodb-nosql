@@ -1,7 +1,7 @@
 // ============================================
 // PREGUNTA 1: INSERCIÓN MASIVA DE 5 CLIENTES
 // ============================================
-// Archivo: evaluacion_t1/t1_pregunta1_bda2.mongodb
+// Archivo: evaluacion_t1/ef_pregunta1_1.mongodb
 
 // Conectar a la base de datos Baticell_store
 use('Baticell_store');
@@ -10,7 +10,7 @@ use('Baticell_store');
 // 2 solteros (id: 1, 3)
 // 2 casados (id: 2, 4)
 // 1 sin estado civil (id: 5)
-db.clientes.insertMany([
+const resultado = db.clientes.insertMany([
   {
     _id: 1,
     nombre: "Juan Carlos",
@@ -63,6 +63,11 @@ db.clientes.insertMany([
   }
 ]);
 
-// Verificar la inserción
-print("=== CLIENTES INSERTADOS ===");
-db.clientes.find().forEach(printjson);
+// Mostrar resultado de la inserción
+console.log("=== RESULTADO DE INSERCIÓN ===");
+console.log("Documentos insertados:", resultado.insertedCount);
+console.log("IDs insertados:", resultado.insertedIds);
+
+// Verificar la inserción - Mostrar todos los clientes
+console.log("\n=== CLIENTES INSERTADOS ===");
+db.clientes.find().toArray();
