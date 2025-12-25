@@ -1,0 +1,28 @@
+// Usar la base de datos
+use("baticell_store")
+
+// PREGUNTA 4.2
+// Listar productos con SO Android 11, ordenados por marca (asc) y precio (desc)
+
+db.products.aggregate([
+  {
+    $match: {
+      "especificaciones.sistema_operativo": "Android 11"  // Filtrar SO Android 11
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      nombre: 1,
+      precio_unitario: 1,
+      marca: 1,
+      especificaciones: 1
+    }
+  },
+  {
+    $sort: {
+      marca: 1,              // Ordenar por marca ascendente (1)
+      precio_unitario: -1    // Luego por precio descendente (-1)
+    }
+  }
+])

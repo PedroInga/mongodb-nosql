@@ -1,0 +1,16 @@
+// Usar la base de datos
+use("baticell_store")
+
+// PREGUNTA 3.1
+// Listar clientes ordenados por apellidos ascendente
+
+db.clients.find(
+  {},
+  {
+    nombre: 1,
+    apellidos: 1,
+    email: 1,
+    telefono: 1,
+    _id: 0
+  }
+).sort({ apellidos: 1 }).toArray()

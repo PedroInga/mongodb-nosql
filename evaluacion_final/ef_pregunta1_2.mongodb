@@ -1,0 +1,50 @@
+// ============================================
+// PREGUNTA 1.2: ACTUALIZAR 3 CLIENTES (UPDATE)
+// ============================================
+// Modificar email, apellido, teléfono y dirección de 3 clientes
+// Archivo: ef_pregunta1_2.mongodb
+
+// Conectar a la base de datos
+use('baticell_store');
+
+// ACTUALIZACIÓN 1: Cliente con _id: 1 (Juan Carlos)
+db.clientes.updateOne(
+  { _id: 1 },
+  {
+    $set: {
+      email: "juancarlos.nuevo@gmail.com",
+      apellido: "Pérez Ramírez",
+      telefono: "999888777",
+      direccion: "Av. La Marina 1500, San Miguel, Lima"
+    }
+  }
+);
+
+// ACTUALIZACIÓN 2: Cliente con _id: 2 (María Elena)
+db.clientes.updateOne(
+  { _id: 2 },
+  {
+    $set: {
+      email: "maria.elena.actualizada@outlook.com",
+      apellido: "González Medina",
+      telefono: "987123456",
+      direccion: "Jr. Puno 234, Cercado de Lima"
+    }
+  }
+);
+
+// ACTUALIZACIÓN 3: Cliente con _id: 3 (Carlos Alberto)
+db.clientes.updateOne(
+  { _id: 3 },
+  {
+    $set: {
+      email: "carlos.actualizado@hotmail.com",
+      apellido: "Rodríguez Mendoza",
+      telefono: "955666777",
+      direccion: "Calle Los Sauces 890, Surco, Lima"
+    }
+  }
+);
+
+// MOSTRAR LOS 3 CLIENTES ACTUALIZADOS
+db.clientes.find({ _id: { $in: [1, 2, 3] } });z

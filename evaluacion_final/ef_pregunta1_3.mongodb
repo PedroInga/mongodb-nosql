@@ -1,0 +1,23 @@
+// ============================================
+// PREGUNTA 1.3: ELIMINAR CLIENTES CASADOS
+// ============================================
+// Eliminar todos los clientes con estado_civil "casado"
+// Archivo: ef_pregunta1_3.mongodb
+
+// Conectar a la base de datos
+use('baticell_store');
+
+// MOSTRAR CLIENTES ANTES DE ELIMINAR
+console.log("=== CLIENTES ANTES DE ELIMINAR ===");
+db.clientes.find();
+
+// ELIMINAR clientes con estado_civil "casado"
+// Esto eliminará los clientes con _id: 2 y 4 (María Elena y Ana Patricia)
+const resultado = db.clientes.deleteMany({ estado_civil: "casado" });
+
+console.log("\n=== RESULTADO DE LA ELIMINACIÓN ===");
+console.log("Clientes eliminados:", resultado.deletedCount);
+
+// MOSTRAR CLIENTES DESPUÉS DE ELIMINAR
+console.log("\n=== CLIENTES DESPUÉS DE ELIMINAR ===");
+db.clientes.find();

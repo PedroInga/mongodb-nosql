@@ -1,0 +1,28 @@
+// Usar la base de datos
+use("baticell_store")
+
+// PREGUNTA 4.1
+// Listar productos con cantidad <= 40, ordenados por cantidad descendente
+
+db.products.aggregate([
+  {
+    $match: {
+      cantidad: { $lte: 40 }  // Filtrar productos con cantidad <= 40
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      nombre: 1,
+      imei: 1,
+      categoria: 1,
+      coloresDisponibles: 1,
+      cantidad: 1  // Incluir cantidad para ver el ordenamiento
+    }
+  },
+  {
+    $sort: {
+      cantidad: -1  // Ordenar por cantidad descendente (-1)
+    }
+  }
+])

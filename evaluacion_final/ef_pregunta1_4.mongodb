@@ -1,0 +1,28 @@
+// ============================================
+// PREGUNTA 1.4: ELIMINAR EL ÚLTIMO CLIENTE INGRESADO
+// ============================================
+// Eliminar el cliente con el _id más alto (último insertado)
+// Archivo: ef_pregunta1_4.mongodb
+
+// Conectar a la base de datos
+use('baticell_store');
+
+// MOSTRAR CLIENTES ANTES DE ELIMINAR
+console.log("=== CLIENTES ANTES DE ELIMINAR ===");
+db.clientes.find();
+
+// BUSCAR el último cliente ingresado (el de mayor _id)
+const ultimoCliente = db.clientes.find().sort({ _id: -1 }).limit(1).toArray()[0];
+console.log("\n=== ÚLTIMO CLIENTE A ELIMINAR ===");
+console.log("ID:", ultimoCliente._id);
+console.log("Nombre:", ultimoCliente.nombre, ultimoCliente.apellido);
+
+// ELIMINAR el último cliente (el de mayor _id)
+const resultado = db.clientes.deleteOne({ _id: ultimoCliente._id });
+
+console.log("\n=== RESULTADO DE LA ELIMINACIÓN ===");
+console.log("Clientes eliminados:", resultado.deletedCount);
+
+// MOSTRAR CLIENTES DESPUÉS DE ELIMINAR
+console.log("\n=== CLIENTES RESTANTES ===");
+db.clientes.find();

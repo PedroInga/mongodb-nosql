@@ -1,0 +1,28 @@
+// Usar la base de datos
+use('baticell_store');
+
+// Actualizar productos con almacenamiento 256 GB
+db.products.updateMany(
+  { "especificaciones.almacenamiento": "256 GB" },
+  { 
+    $set: { 
+      "especificaciones.ram": "16 GB",
+      "cantidad": 45
+    },
+    $addToSet: {
+      "especificaciones.colores_disponibles": "dorado"
+    }
+  }
+)
+
+// Verificar los cambios realizados
+db.products.find(
+  { "especificaciones.almacenamiento": "256 GB" },
+  {
+    nombre: 1,
+    cantidad: 1,
+    "especificaciones.ram": 1,
+    "especificaciones.almacenamiento": 1,
+    "especificaciones.colores_disponibles": 1
+  }
+).pretty()

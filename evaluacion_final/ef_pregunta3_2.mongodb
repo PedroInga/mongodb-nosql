@@ -1,0 +1,18 @@
+// Usar la base de datos
+use("baticell_store")
+
+// PREGUNTA 3.2
+// Listar productos con precio >= 1000, ordenados por precio ascendente
+
+db.products.find(
+  { precio_unitario: { $gte: 1000 } },
+  {
+    nombre: 1,
+    marca: 1,
+    categoria: 1,
+    imei: 1,
+    especificaciones: 1,
+    precio_unitario: 1,
+    _id: 0
+  }
+).sort({ precio_unitario: 1 }).toArray()

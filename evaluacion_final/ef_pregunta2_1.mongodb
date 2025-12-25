@@ -1,0 +1,14 @@
+// Usar la base de datos
+use('baticell_store');
+
+// Listar productos con SO Android 10
+db.products.find(
+  { "especificaciones.sistema_operativo": "Android 10" },
+  { 
+    nombre: 1, 
+    descripcion: 1, 
+    precio_unitario: 1, 
+    categoria: 1,
+    _id: 0 
+  }
+).pretty()
